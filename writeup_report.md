@@ -106,29 +106,17 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 The final model architecture consisted of a convolution neural network with the following layers and layer sizes:
 
 Here is a detailed layers of the architecture:
-____________________________________________________________________________________________________
-| Layer (type)                    | Output Shape         |Param #     |Connected to                |     
-____________________________________________________________________________________________________
-|lambda_1 (Lambda)                |(None, 160, 320, 3)   |0           |lambda_input_1[0][0]        |     
-____________________________________________________________________________________________________
-|cropping2d_1 (Cropping2D)        |(None, 65, 320, 3)    |0           |lambda_1[0][0]              |     
-____________________________________________________________________________________________________
-|convolution2d_1 (Convolution2D)  |(None, 61, 316, 6)    |456         |cropping2d_1[0][0]          |     
-____________________________________________________________________________________________________
-|maxpooling2d_1 (MaxPooling2D)    |(None, 30, 158, 6)    |0           |convolution2d_1[0][0]       |     
-____________________________________________________________________________________________________
-|convolution2d_2 (Convolution2D)  |(None, 26, 154, 6)    |906         |maxpooling2d_1[0][0]        |     
-____________________________________________________________________________________________________
-|maxpooling2d_2 (MaxPooling2D)    |(None, 13, 77, 6)     |0           |convolution2d_2[0][0]       |     
-____________________________________________________________________________________________________
-|flatten_1 (Flatten)              |(None, 6006)          |0           |maxpooling2d_2[0][0]        |     
-____________________________________________________________________________________________________
-|dense_1 (Dense)                  |(None, 120)           |720840      |flatten_1[0][0]             |     
-____________________________________________________________________________________________________
-|dense_2 (Dense)                  |(None, 84)            |10164       |dense_1[0][0]               |     
-____________________________________________________________________________________________________
-|dense_3 (Dense)                  |(None, 1)             |85          |dense_2[0][0]               |     
-____________________________________________________________________________________________________
+1. | Layer (type)                    | Output Shape         |Param #     |Connected to                |     
+2. |lambda_1 (Lambda)                |(None, 160, 320, 3)   |0           |lambda_input_1[0][0]        |     
+3. |cropping2d_1 (Cropping2D)        |(None, 65, 320, 3)    |0           |lambda_1[0][0]              |     
+4. |convolution2d_1 (Convolution2D)  |(None, 61, 316, 6)    |456         |cropping2d_1[0][0]          |     
+5. |maxpooling2d_1 (MaxPooling2D)    |(None, 30, 158, 6)    |0           |convolution2d_1[0][0]       |     
+6. |convolution2d_2 (Convolution2D)  |(None, 26, 154, 6)    |906         |maxpooling2d_1[0][0]        |     
+7. |maxpooling2d_2 (MaxPooling2D)    |(None, 13, 77, 6)     |0           |convolution2d_2[0][0]       |     
+8. |flatten_1 (Flatten)              |(None, 6006)          |0           |maxpooling2d_2[0][0]        |     
+9. |dense_1 (Dense)                  |(None, 120)           |720840      |flatten_1[0][0]             |     
+10. |dense_2 (Dense)                  |(None, 84)            |10164       |dense_1[0][0]               |     
+11. |dense_3 (Dense)                  |(None, 1)             |85          |dense_2[0][0]               |     
 
 #### 3. Creation of the Training Set & Training Process
 
@@ -163,10 +151,10 @@ I used this training data for training the model. The validation set helped dete
 
 The training time on normal cpu, model loss on training and validation set for each epoch is as shown below:
 
-Epoch 1/4: 60288/60288 - 6178s - loss: 0.7414 - val_loss: 0.0459
-Epoch 2/4: 60288/60288 - 6818s - loss: 0.0402 - val_loss: 0.0373
-Epoch 3/4: 60288/60288 - 6501s - loss: 0.0351 - val_loss: 0.0342
-Epoch 4/4: 60288/60288 - 6978s - loss: 0.0328 - val_loss: 0.0321
+1. Epoch 1/4: 60288/60288 - 6178s - loss: 0.7414 - val_loss: 0.0459
+2. Epoch 2/4: 60288/60288 - 6818s - loss: 0.0402 - val_loss: 0.0373
+3. Epoch 3/4: 60288/60288 - 6501s - loss: 0.0351 - val_loss: 0.0342
+4. Epoch 4/4: 60288/60288 - 6978s - loss: 0.0328 - val_loss: 0.0321
 
 Finally the the model was saved.
 
