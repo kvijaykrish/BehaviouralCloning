@@ -161,13 +161,14 @@ I finally randomly shuffled the data set and put 20% of the data into a validati
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 4 as evidenced by model.html I used an adam optimizer so that manually training the learning rate wasnt necessary.
 
-The loss on training and validation set is as shown below:
+The training time on normal cpu, model loss on training and validation set for each epoch is as shown below:
 
-Epoch 1/4
-60288/60288 [==============================] - 6178s - loss: 0.7414 - val_loss: 0.0459
-Epoch 2/4
-60288/60288 [==============================] - 6818s - loss: 0.0402 - val_loss: 0.0373
-Epoch 3/4
-60288/60288 [==============================] - 6501s - loss: 0.0351 - val_loss: 0.0342
-Epoch 4/4
-60288/60288 [==============================] - 6978s - loss: 0.0328 - val_loss: 0.0321
+Epoch 1/4: 60288/60288 - 6178s - loss: 0.7414 - val_loss: 0.0459
+Epoch 2/4: 60288/60288 - 6818s - loss: 0.0402 - val_loss: 0.0373
+Epoch 3/4: 60288/60288 - 6501s - loss: 0.0351 - val_loss: 0.0342
+Epoch 4/4: 60288/60288 - 6978s - loss: 0.0328 - val_loss: 0.0321
+
+Finally the the model was saved.
+
+With the trained model, the simmulator was able to run more than 1 lap in autonomous mode in track1. The video is available in video.mp4 at 60 fps.
+
