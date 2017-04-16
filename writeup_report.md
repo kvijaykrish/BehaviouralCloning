@@ -144,16 +144,30 @@ I then created more number of references to the images with abs(steering angle) 
 ![alt text][image5]
 
 
-Still the training data set has more images with sterring angle <0.01. To augment the data set, I included horizontal translation of images and also flipped images and angles. For example, here is an imageset that has then been flipped, translated for 3 images (center, right and left camera):
+Still the training data set has more images with sterring angle < 0.01. To augment the data set, I included horizontal translation of images and also flipped images and angles. For example, here is an imageset that has then been flipped, translated for 3 images (center, right and left camera):
 
 ![alt text][image3]
 
 
-If the original image abs(steering angle)was less than 0.01 then translation was done with a probability of 0.5. This was to reatin original images as well as to simulate car entering the road from out of road conditions
+If the abs(steering angle) of the original center camera image was less than 0.01 then translation was done with a probability of 0.5. This was to reatin original images as well as to simulate car entering the road from out of road conditions.
 
-After the augumentation process, I had 12560 number of data points. 
-So total of 2(fli, no flip) * 3(left right , center) * 12560 which is 75360 images. I then preprocessed this data by brightness correction, normalization, cropping.
+After the augumentation process, I had 12560 number of data points. In the generator I had used 6 images for each data point.
+All  3 camera images (left right , center) times two (flipped and no flipped). So total is 12560 * 2 * 3 which is 75360 images. I then preprocessed this data by brightness correction, normalization, cropping. 
+
+Batch size was 32 * 2* 3 i.e 192
+No. of Epochs = 4
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 4 as evidenced by model.html I used an adam optimizer so that manually training the learning rate wasnt necessary.
+
+The loss on training and validation set is as shown below:
+
+Epoch 1/4
+60288/60288 [==============================] - 6178s - loss: 0.7414 - val_loss: 0.0459
+Epoch 2/4
+60288/60288 [==============================] - 6818s - loss: 0.0402 - val_loss: 0.0373
+Epoch 3/4
+60288/60288 [==============================] - 6501s - loss: 0.0351 - val_loss: 0.0342
+Epoch 4/4
+60288/60288 [==============================] - 6978s - loss: 0.0328 - val_loss: 0.0321
